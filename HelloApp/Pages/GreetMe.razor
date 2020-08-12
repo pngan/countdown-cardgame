@@ -1,0 +1,10 @@
+﻿@page "/GreetMe/{Name}"
+
+<h1>
+    Welcome @Name!
+</h1>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+}
