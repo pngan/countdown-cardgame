@@ -1,4 +1,3 @@
 # hello-blazorwasm
 
-First browser hosted blazor app, following tutorial in 
-https://www.telerik.com/blogs/blazor-vs-angular-web-developers
+Experiment with [ASP.NET Core SignalR with Blazor}(https://docs.microsoft.com/en-us/aspnet/core/blazor/tutorials/signalr-blazor?view=aspnetcore-6.0&tabs=visual-studio&pivots=webassembly).
