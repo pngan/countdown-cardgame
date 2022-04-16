@@ -4,6 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Countdown-CardGame.Server</RootNamespace>
+    <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\BlazorWebAssemblySignalRApp.Client.csproj" />
-    <ProjectReference Include="..\Shared\BlazorWebAssemblySignalRApp.Shared.csproj" />
+    <ProjectReference Include="..\Client\Countdown-CardGame.Client.csproj" />
+    <ProjectReference Include="..\Shared\Countdown-CardGame.Shared.csproj" />
   </ItemGroup>
 
 

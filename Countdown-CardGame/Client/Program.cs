@@ -1,4 +1,4 @@
-using BlazorWebAssemblySignalRApp.Client;
+using Countdown_CardGame.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

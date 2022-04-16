@@ -1,7 +1,7 @@
-using BlazorWebAssemblySignalRApp.Shared;
+using Countdown_CardGame.Shared;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlazorWebAssemblySignalRApp.Server.Controllers
+namespace Countdown_CardGame.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]

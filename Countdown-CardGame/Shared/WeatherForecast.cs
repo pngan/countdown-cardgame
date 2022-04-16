@@ -1,4 +1,4 @@
-namespace BlazorWebAssemblySignalRApp.Shared
+namespace Countdown_CardGame.Shared
 {
     public class WeatherForecast
     {

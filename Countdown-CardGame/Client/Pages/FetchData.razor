@@ -1,7 +1,8 @@
 ﻿@page "/fetchdata"
-@using BlazorWebAssemblySignalRApp.Shared
+@using Countdown_CardGame.Shared
 @inject HttpClient Http
 
+@inject NavigationManager NavManager
 <PageTitle>Weather forecast</PageTitle>
 
 <h1>Weather forecast</h1>
@@ -35,6 +36,8 @@ else
             }
         </tbody>
     </table>
+    
+<button class="btn btn-primary" @onclick="NavCounter">Counter</button>
 }
 
 @code {
@@ -43,5 +46,10 @@ else
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+    }
+    
+    private void NavCounter()
+    {
+        NavManager.NavigateTo("/counter");
     }
 }
