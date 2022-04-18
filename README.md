@@ -1,3 +1,22 @@
-# hello-blazorwasm
+# Countdown Card Game
 
-Experiment with [ASP.NET Core SignalR with Blazor}(https://docs.microsoft.com/en-us/aspnet/core/blazor/tutorials/signalr-blazor?view=aspnetcore-6.0&tabs=visual-studio&pivots=webassembly).
+
+
+## Build Docker Image
+```bash
+cd  <repo_root\Countdown-CardGame>
+docker image build -t <dockerId>/countdowncardgameserver -f .\Server\Dockerfile .
+```
+
+## Run docker Image locally
+
+```bash
+docker run -p 80:80 <dockerId>/countdowncardgameserver
+```
+Use browser to navigate to `http://localhost`
+
+## Upload image to docker hub
+
+```bash
+docker push  <dockerId>/countdowncardgameserver
+```
