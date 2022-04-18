@@ -10,4 +10,9 @@ namespace Countdown_CardGame.Shared
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }
+
+    public class GameInfo
+    {
+        public string PlayerName { get; set; }
+    }
 }
