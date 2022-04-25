@@ -6,7 +6,7 @@
 
 <h1>Welcome to Game Box!</h1>
 What is your name? 
-<input type="text" @oninput="UpdatePlayerName" @bind="@PlayerName"  />
+<input type="text"  @bind="PlayerName"  />
     
 <button  @onclick="GotoFetchData">Play Countdown</button>
 <button  @onclick="GotoCounter">Play Up and Down the River</button>
@@ -16,8 +16,16 @@ What is your name?
 <input type="text" />
 @code {
     const string PLAY_NAME_STORAGE_KEY = "gamebox.playername";
-    
-    private string PlayerName { get; set; } = String.Empty;
+
+    private string _playerName = string.Empty;
+    private string PlayerName { 
+        get => _playerName;
+        set
+        {
+            _playerName = value;
+            localStorage.SetItemAsync(PLAY_NAME_STORAGE_KEY, PlayerName);
+        }
+    }
 
     private void GotoFetchData() => NavigationManager.NavigateTo("fetchdata");
     private void GotoCounter() => NavigationManager.NavigateTo("counter"); 
@@ -28,9 +36,9 @@ What is your name?
         PlayerName = await localStorage.GetItemAsync<string>(PLAY_NAME_STORAGE_KEY);
     }
     
-    private async Task UpdatePlayerName(ChangeEventArgs e)
-    {
-        PlayerName = e.Value.ToString();
-        await localStorage.SetItemAsync(PLAY_NAME_STORAGE_KEY, PlayerName);
-    }
+    //private async Task UpdatePlayerName(ChangeEventArgs e)
+    //{
+    //    PlayerName = e.Value.ToString();
+    //    await localStorage.SetItemAsync(PLAY_NAME_STORAGE_KEY, PlayerName);
+    //}
 }
