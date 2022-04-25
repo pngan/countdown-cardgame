@@ -1,10 +1,12 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 <PageTitle>Index</PageTitle>
 
 <h1>Welcome to Game Box!</h1>
 What is your name? 
-<input type="text" />
+<input type="text" @oninput="UpdatePlayerName" @bind="PlayerName"  />
     
 <button  @onclick="GotoFetchData">Play Countdown</button>
 <button  @onclick="GotoCounter">Play Up and Down the River</button>
@@ -12,8 +14,23 @@ What is your name?
 <button >Join Existing Game</button>
 
 <input type="text" />
-@code { 
-    private void GotoFetchData() { NavigationManager.NavigateTo("fetchdata"); } 
-    private void GotoCounter() { NavigationManager.NavigateTo("counter"); } 
-    private void GotoWouldYouRather() { NavigationManager.NavigateTo("wouldyourather"); } 
+@code {
+    const string PLAY_NAME_STORAGE_KEY = "gamebox.playername";
+    
+    public string PlayerName { get; set; } = String.Empty;
+
+    private void GotoFetchData() => NavigationManager.NavigateTo("fetchdata");
+    private void GotoCounter() => NavigationManager.NavigateTo("counter"); 
+    private void GotoWouldYouRather() => NavigationManager.NavigateTo("wouldyourather");
+
+    protected override async Task OnInitializedAsync()
+    {
+        PlayerName = await localStorage.GetItemAsync<string>(PLAY_NAME_STORAGE_KEY);
+    }
+    
+    private async Task UpdatePlayerName(ChangeEventArgs e)
+    {
+        PlayerName = e.Value.ToString();
+        await localStorage.SetItemAsync(PLAY_NAME_STORAGE_KEY, PlayerName);
+    }
 }
