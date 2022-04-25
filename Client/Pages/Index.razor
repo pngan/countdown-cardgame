@@ -8,12 +8,12 @@ What is your name?
     
 <button  @onclick="GotoFetchData">Play Countdown</button>
 <button  @onclick="GotoCounter">Play Up and Down the River</button>
-<button @onclick="GotoGamebox">Play Would you Rather</button>
+<button @onclick="GotoWouldYouRather">Play Would you Rather</button>
 <button >Join Existing Game</button>
 
 <input type="text" />
 @code { 
     private void GotoFetchData() { NavigationManager.NavigateTo("fetchdata"); } 
     private void GotoCounter() { NavigationManager.NavigateTo("counter"); } 
-    private void GotoGamebox() { NavigationManager.NavigateTo("gamebox"); } 
+    private void GotoWouldYouRather() { NavigationManager.NavigateTo("wouldyourather"); } 
 }
