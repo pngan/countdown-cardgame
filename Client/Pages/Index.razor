@@ -1,6 +1,7 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject HttpClient Http
 
 <PageTitle>Index</PageTitle>
 
@@ -14,6 +15,8 @@ What is your name?
 <button >Join Existing Game</button>
 
 <input type="text" />
+
+<input @bind="@GitHash" />
 @code {
     const string PLAY_NAME_STORAGE_KEY = "gamebox.playername";
 
@@ -23,9 +26,11 @@ What is your name?
         set
         {
             _playerName = value;
-            localStorage.SetItemAsync(PLAY_NAME_STORAGE_KEY, PlayerName);
+            LocalStorage.SetItemAsync(PLAY_NAME_STORAGE_KEY, PlayerName);
         }
     }
+
+    public string GitHash { get; set; } = string.Empty;
 
     private void GotoFetchData() => NavigationManager.NavigateTo("fetchdata");
     private void GotoCounter() => NavigationManager.NavigateTo("counter"); 
@@ -33,12 +38,7 @@ What is your name?
 
     protected override async Task OnInitializedAsync()
     {
-        PlayerName = await localStorage.GetItemAsync<string>(PLAY_NAME_STORAGE_KEY);
+        PlayerName = await LocalStorage.GetItemAsync<string>(PLAY_NAME_STORAGE_KEY);
+        GitHash = await Http.GetStringAsync("GitHash");
     }
-    
-    //private async Task UpdatePlayerName(ChangeEventArgs e)
-    //{
-    //    PlayerName = e.Value.ToString();
-    //    await localStorage.SetItemAsync(PLAY_NAME_STORAGE_KEY, PlayerName);
-    //}
 }
