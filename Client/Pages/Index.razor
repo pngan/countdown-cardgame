@@ -5,18 +5,22 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Welcome to Game Box!</h1>
-What is your name? 
-<input type="text"  @bind="PlayerName"  />
-    
-<button  @onclick="GotoFetchData">Play Countdown</button>
-<button  @onclick="GotoCounter">Play Up and Down the River</button>
-<button @onclick="GotoWouldYouRather">Play Would you Rather</button>
-<button >Join Existing Game</button>
 
-<input type="text" />
+<h1>Choose Your Game</h1>
 
-<input @bind="@GitHash" />
+<div class="button-box">
+    <div class="grid-container">
+        <button class="grid-item" @onclick="GotoFetchData">Countdown</button>
+        <button class="grid-item"  @onclick="GotoCounter">Up and Down</button>
+        <button class="grid-item" @onclick="GotoWouldYouRather">Guess Who</button>
+        <button class="grid-item" @onclick="GotoWouldYouRather">Planning Poker</button>
+        <button class="grid-item">Have Game Code</button>
+        <input class="grid-item"  type="text"  />
+    </div>
+</div>
+
+<label for="fname">Version: </label>
+<input class="no-border" @bind="@GitHash" readonly />
 @code {
     const string PLAY_NAME_STORAGE_KEY = "gamebox.playername";
 
