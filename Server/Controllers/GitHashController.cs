@@ -7,6 +7,6 @@ namespace gamebox.Server.Controllers
     public class GitHashController : ControllerBase
     {
         [HttpGet]
-        public string Get() => Environment.GetEnvironmentVariable("githash");
+        public string Get() => Environment.GetEnvironmentVariable("githash").Substring(0, 8);
     }
 }
