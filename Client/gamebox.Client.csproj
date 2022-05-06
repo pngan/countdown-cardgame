@@ -17,4 +17,10 @@
     <ProjectReference Include="..\Shared\gamebox.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Pages\Index.razor.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
